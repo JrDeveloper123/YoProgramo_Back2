@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/image")
-@CrossOrigin(origins = "*")
+@CrossOrigin()
 public class ImagenesController {
 
 	private final ImagenesService imagenesService;
