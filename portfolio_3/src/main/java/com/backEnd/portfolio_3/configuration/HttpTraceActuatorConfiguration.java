@@ -15,5 +15,6 @@ public class HttpTraceActuatorConfiguration {
 	@Bean
 	public HttpTraceRepository httpTraceRepository() {
 		return new InMemoryHttpTraceRepository();
-	}
+	
+}
 }
