@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/image")
-@CrossOrigin()
+@CrossOrigin(origins = {"http://portfolioyoprog.web.app"})
 public class ImagenesController {
 
 	private final ImagenesService imagenesService;
