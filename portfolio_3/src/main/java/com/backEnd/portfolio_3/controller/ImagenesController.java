@@ -9,6 +9,7 @@ import com.backEnd.portfolio_3.dto.ImagenesResponseDTO;
 import com.backEnd.portfolio_3.service.ImagenesService;
 import java.util.List;
 import javax.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,7 @@ public class ImagenesController {
 		return imagenesService.getAll();
 	}
 
+        @PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/create")
 	public ImagenesResponseDTO newUsuario(@Valid @RequestBody ImagenesRequestDTO newImagenes) {
 		return imagenesService.save(newImagenes);
@@ -45,11 +47,13 @@ public class ImagenesController {
 		return imagenesService.findById(Id);
 	}
 
+        @PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/update/{id}")
 	public ImagenesResponseDTO replaceImagenes(@Valid @RequestBody ImagenesRequestDTO newImagenes, @PathVariable("id") Long id) {
 		return imagenesService.update(newImagenes, id);
 	}
 
+        @PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/delete/{id}")
 	public void deleteImagenes(@PathVariable("id") Long id) {
 		imagenesService.delete(id);

@@ -11,6 +11,7 @@ import com.backEnd.portfolio_3.service.PersonService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +39,7 @@ public class PersonController {
 		return personService.getAll();
 	}
 
-	
+	@PreAuthorize("hasRole('ADMIN')")
         @PostMapping("/create")
 	public PersonResponseDTO newPerson(@Valid @RequestBody PersonRequestDTO newPerson) {
 		return personService.save(newPerson);
@@ -49,13 +50,13 @@ public class PersonController {
 		return personService.findById(personId);
 	}
 
-	
+	@PreAuthorize("hasRole('ADMIN')")
         @PutMapping("/update/{id}")
 	public PersonResponseDTO replacePerson(@Valid @RequestBody PersonRequestDTO newPerson, @PathVariable("id") Long personId) {
 		return personService.update(newPerson, personId);
 	}
 
-	
+	@PreAuthorize("hasRole('ADMIN')")
          @DeleteMapping("/delete/{id}")
 	public void deletePerson(@PathVariable("id") Long personId) {
 		personService.delete(personId);

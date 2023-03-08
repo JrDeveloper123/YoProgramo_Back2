@@ -10,6 +10,7 @@ import com.backEnd.portfolio_3.service.EducationService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,7 @@ public class EducationController {
 		return educationService.getAll();
 	}
 
-        //@PreAuthorize("hasRole('ADMIN')")
+        @PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/create")
 	public EducationResponseDTO newEducation(@Valid @RequestBody EducationRequestDTO newEducation) {
 		return educationService.save(newEducation);
@@ -48,13 +49,13 @@ public class EducationController {
 		return educationService.findById(educationId);
 	}
 
-        // @PreAuthorize("hasRole('ADMIN')")
+         @PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/update/{id}")
 	public EducationResponseDTO replaceEducation(@Valid @RequestBody EducationRequestDTO newProyect, @PathVariable("id") Long educationId) {
 		return educationService.update(newProyect, educationId);
 	}
 
-       //  @PreAuthorize("hasRole('ADMIN')")
+         @PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/delete/{id}")
 	public void deleteEducation(@PathVariable("id") Long educationId) {
 		educationService.delete(educationId);

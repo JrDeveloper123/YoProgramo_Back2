@@ -10,6 +10,7 @@ import com.backEnd.portfolio_3.service.ProyectService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,7 @@ public class ProyectController {
 		return proyectService.getAll();
 	}
 
-	//@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
         @PostMapping("/create")
 	public ProyectResponseDTO newProyect(@Valid @RequestBody ProyectRequestDTO newProyect) {
 		return proyectService.save(newProyect);
@@ -48,13 +49,13 @@ public class ProyectController {
 		return proyectService.findById(proyectId);
 	}
 
-	//@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
         @PutMapping("/update/{id}")
 	public ProyectResponseDTO replaceProyect(@Valid @RequestBody ProyectRequestDTO newProyect, @PathVariable("id") Long proyectId) {
 		return proyectService.update(newProyect, proyectId);
 	}
 
-	//@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
         @DeleteMapping("/delete/{id}")
 	public void deleteProyect(@PathVariable("id") Long proyectId) {
 		proyectService.delete(proyectId);

@@ -10,6 +10,7 @@ import com.backEnd.portfolio_3.service.ExperienceService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,7 @@ public class ExperienceController {
 	}
 
 	
-        
+        @PreAuthorize("hasRole('ADMIN')")
         @PostMapping("/create")
 	public ExperienceResponseDTO newExperience(@Valid @RequestBody ExperienceRequestDTO newExperience) {
 		return experienceService.save(newExperience);
@@ -48,13 +49,13 @@ public class ExperienceController {
 		return experienceService.findById(experienceId);
 	}
 
-	//@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
         @PutMapping("/update/{id}")
 	public ExperienceResponseDTO replaceExperience(@Valid @RequestBody ExperienceRequestDTO newProyect, @PathVariable("id") Long experienceId) {
 		return experienceService.update(newProyect, experienceId);
 	}
 
-	//@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
          @DeleteMapping("/delete/{id}")
 	public void deleteExperience(@PathVariable("id") Long experienceId) {
 		experienceService.delete(experienceId);
