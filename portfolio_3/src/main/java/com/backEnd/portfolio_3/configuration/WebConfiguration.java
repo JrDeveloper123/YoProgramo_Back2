@@ -19,7 +19,7 @@ public class WebConfiguration  implements WebMvcConfigurer{
     
     public void addCorsMappings(CorsRegistry registry){
         
-        registry.addMapping("/**");
+        registry.addMapping("/**").allowedOrigins("https://portfolioarch-3a99e.web.app").allowedMethods("*").allowedHeaders("*");
         
     }
     
