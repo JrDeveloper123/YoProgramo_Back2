@@ -22,7 +22,7 @@ public class Rol {
     private int id;
     
     @NotNull
-    @Enumerated(EnumType.STRING) //Me permite poner alfanumericos
+    @Enumerated(EnumType.STRING) 
     private RolNombre rolNombre;
     
     //Constructores
