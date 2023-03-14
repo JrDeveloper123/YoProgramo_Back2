@@ -42,7 +42,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-/*
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
@@ -54,19 +54,8 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-    }*/
-@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/**").permitAll()
-                .antMatchers(HttpMethod.POST,"/auth/login").permitAll()
-                .anyRequest().authenticated()
-                .and().exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
-                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-        http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-
     }
+
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
