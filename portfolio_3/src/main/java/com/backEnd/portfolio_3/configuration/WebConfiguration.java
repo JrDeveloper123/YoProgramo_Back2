@@ -18,9 +18,9 @@ public class WebConfiguration  implements WebMvcConfigurer{
     @Override
     
     public void addCorsMappings(CorsRegistry registry){
-        
+        /*
         registry.addMapping("/**").allowedOrigins("https://portfolioarch-3a99e.firebaseapp.com/").allowedMethods("*").allowedHeaders("*");
-        
+        */
     }
     
 }
