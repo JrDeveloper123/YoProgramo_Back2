@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins= "https://portfolioarch-3a99e.web.app")
+@CrossOrigin()
 @RequestMapping("/skill")
 
 public class SkillController {

@@ -4,7 +4,6 @@ com\backEnd\portfolio_3\service\ExperienceService.class
 com\backEnd\portfolio_3\dto\SkillResponseDTO$SkillResponseDTOBuilder.class
 com\backEnd\portfolio_3\dto\EducationRequestDTO.class
 com\backEnd\portfolio_3\model\Education.class
-com\backEnd\portfolio_3\configuration\WebConfiguration.class
 com\backEnd\portfolio_3\Portfolio3Application.class
 com\backEnd\portfolio_3\model\Imagenes$ImagenesBuilder.class
 com\backEnd\portfolio_3\dto\ProyectRequestDTO.class
